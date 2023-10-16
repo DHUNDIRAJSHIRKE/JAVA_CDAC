@@ -1,71 +1,68 @@
+package Enums;
+
 import java.util.*;
-class Canteen{
-	public static void main(String[] args)
-	{
-		boolean exit=false;
-		int num=0,item,count=0;
-		float bill=0, idli=20,samosa=10,pohe=15,dosa=27,meduvada=32;
+
+class Canteen {
+	public static void main(String[] args) {
+		boolean exit = false;
+		int num = 0, item, count = 0;
+		int bill = 0;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter a choice from below:");
-		System.out.println("1.idli=20,  2.samosa=10,  3.pohe=15,   4.dosa=27,   5.meduvada=32   6.bill");
-		
-		//item= sc.nextInt();
-		while(!exit)
-			{
-				
-				
-				item= sc.nextInt();
-				if(item!=6)
-				{	
-					
-					
-					System.out.println("How many of those:");
-					num = sc.nextInt();
-				}
-				switch(item)
-				{
-					case 1:
-						bill = bill + num*idli;
-						System.out.println("Idli added!!");
-						count=count+num;
-						break;
-					case 2:
-						bill = bill + num*samosa;
-						System.out.println("samosa added!!");
-						count=count+num;
-						break;
-
-					case 3:
-						bill = bill + num*pohe;
-						System.out.println("pohe added!!");
-						count=count+num;
-						break;
-					case 4:
-						bill = bill + num*dosa;
-						System.out.println("dosa added!!");
-						count=count+num;
-						break;
-					case 5:
-						bill = bill + num*meduvada;
-						System.out.println("meduvada added!!");
-						count=count+num;
-						break;
-					case 6:
-						exit=true;
-
-				
-				}
-				if(item!=6)
-				{	
-					
-				System.out.println("Anything else?:");	
-					
-			}
-				
+		int i = 1;
+		for (menu nashta : menu.values()) {
+			System.out.print(" " + (i++) + ". ");
+			System.out.print(nashta);
+			System.out.print(" ,");
 		}
-		System.out.println("Your bill for " +count+ " item is :$"+bill);
+		System.out.println(i + ". bill ");
+		menu Price = null;
+		while (!exit) {
+			item = sc.nextInt();
+			if (item != 6) {
+				System.out.print("How many of those:  ->");
+				num = sc.nextInt();
+			}
+			switch (item) {
+			case 1:
+				Price = menu.valueOf("IDLI");
+				bill = bill + num * Price.getPrice();
+				System.out.println(" " + num + "  added!!");
+				count = count + num;
+				break;
+			case 2:
+				Price = menu.valueOf(("samosa").toUpperCase());
+				bill = bill + num * Price.getPrice();
+				System.out.println(" " + num + " samosa added!!");
+				count = count + num;
+				break;
 
-	sc.close();
+			case 3:
+				Price = menu.valueOf(("pohe").toUpperCase());
+				bill = bill + num * Price.getPrice();
+				System.out.println(" " + num + " pohe added!!");
+				count = count + num;
+				break;
+			case 4:
+				Price = menu.valueOf(("dosa").toUpperCase());
+				bill = bill + num * Price.getPrice();
+				System.out.println(" " + num + " dosa added!!");
+				count = count + num;
+				break;
+			case 5:
+				Price = menu.valueOf(("meduvada").toUpperCase());
+				bill = bill + num * Price.getPrice();
+				System.out.println(" " + num + " meduvada added!!");
+				count = count + num;
+				break;
+			case 6:
+				exit = true;
+			}
+			if (item != 6) {
+				System.out.print("Anything else? or 6 to bill:");
+			}
+		}
+		System.out.println("\t\tYour bill for " + count + " item is :$" + bill);
+		sc.close();
 	}
-	
 }
